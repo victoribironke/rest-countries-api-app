@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark-blue);
+  padding: 30px 15px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+}
+
+.right {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mode {
+  font-weight: 600;
+  color: white;
+}
+
+.header div img {
+  margin-right: 8px;
+}

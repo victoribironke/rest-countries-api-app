@@ -1,0 +1,107 @@
+.wrapper {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px 25px 40px;
+}
+
+.back {
+  background: var(--dark-blue);
+  cursor: pointer;
+  width: 120px;
+  height: 40px;
+  box-shadow: 0px 0px 2px black;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  justify-content: space-between;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  align-self: flex-start;
+  margin-bottom: 50px;
+}
+
+.backImg {
+  width: 25px;
+  height: auto;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.name {
+  color: white;
+  font-size: 35px;
+  font-weight: 700;
+  align-self: flex-start;
+  margin-bottom: 25px;
+}
+
+.detail {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dark-gray);
+  align-self: flex-start;
+}
+
+.detail + .detail {
+  margin-top: 10px;
+}
+
+#tld {
+  margin-top: 50px;
+}
+
+.div2 {
+  align-self: flex-start;
+}
+
+@media (width >= 900px) {
+  .div1 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .div2 {
+    width: 53%;
+    height: auto;
+    align-self: center;
+  }
+
+  .div3 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .div4,
+  .div5 {
+    width: 48%;
+    height: auto;
+  }
+
+  #tld {
+    margin: 0;
+    align-self: flex-end;
+  }
+
+  .img {
+    width: 45%;
+    scale: 0.9;
+    margin: 0;
+  }
+}
