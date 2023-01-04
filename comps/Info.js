@@ -1,6 +1,15 @@
 import styles from "../styles/Info.module.css";
 
 const Info = (props) => {
+  const showMore = (e) => {
+    fetch(`https://restcountries.com/v3.1/name/${e}`)
+      .then((res) => res.json())
+      .then((resp) => {
+        props.fromBorders(resp);
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className={styles.wrapper} id={props.hide ? "hide" : ""}>
       <div className={styles.back} onClick={props.back}>
@@ -38,6 +47,16 @@ const Info = (props) => {
               <p className={`${styles.langs} ${styles.detail}`}>
                 <span>Languages:</span> {props.languages.split(" ").join(", ")}
               </p>
+            </div>
+          </div>
+          <div className={styles.bordersDiv}>
+            <p>Border Countries</p>
+            <div className={styles.borders}>
+              {props.borders.map((border) => (
+                <p onClick={() => showMore(border)} className={styles.border}>
+                  {border}
+                </p>
+              ))}
             </div>
           </div>
         </div>

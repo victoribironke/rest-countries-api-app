@@ -11,18 +11,19 @@ const Home = () => {
   const [single, setSingle] = useState([]);
   const [searchHide, setSearchHide] = useState(false);
   const [infoHide, setInfoHide] = useState(true);
+  const [borde, setBorde] = useState([]);
   const cardDiv = useRef(null);
 
   const back = () => {
     cardDiv.current.id = "";
-    setSearchHide(!searchHide);
-    setInfoHide(!infoHide);
+    setSearchHide(false);
+    setInfoHide(true);
   };
 
   const details = (e) => {
     cardDiv.current.id = "hide";
-    setSearchHide(!searchHide);
-    setInfoHide(!infoHide);
+    setSearchHide(true);
+    setInfoHide(false);
     setSingle(e);
   };
 
@@ -52,6 +53,7 @@ const Home = () => {
         let langs = "";
         let curr = "";
         let nativeName = "";
+        let borders = [];
 
         for (let key in country.languages) {
           langs += `${country.languages[key]} `;
@@ -62,6 +64,20 @@ const Home = () => {
         for (let key in country.name.nativeName) {
           nativeName += country.name.nativeName[key].common;
         }
+
+        for (let i = 0; i < country.borders.length; i++) {
+          fetch(
+            `https://restcountries.com/v3.1/alpha?codes=${country.borders[i]}`
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              borders.push(data[0].name.common);
+            })
+            .catch((err) => console.error(err));
+        }
+        setTimeout(() => setBorde(borders), 3000);
+        // country.borders.forEach((border) => {
+        // });
 
         return (
           <Info
@@ -76,7 +92,9 @@ const Home = () => {
             currencies={curr}
             languages={langs}
             back={back}
+            borders={borde}
             hide={infoHide}
+            fromBorders={details}
           />
         );
       })}
